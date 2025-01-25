@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Product {
@@ -13,4 +13,7 @@ export class Product {
 
     @Column()
     valor: string;
+
+    @Column({ default: true })
+    status: boolean;
 }

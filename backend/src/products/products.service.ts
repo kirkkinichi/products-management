@@ -49,11 +49,17 @@ export class ProductsService {
         return this.productRepository.save(product);
     }
 
-    // Method to delete a product
+    // Method to inactivate a product
     async delete(codprod: number) {
-        const result = await this.productRepository.delete(codprod);
-        if (result.affected === 0) {
+        const product = await this.productRepository.findOne({
+            where: { codprod },
+        });
+        
+        if (!product) {
             throw new Error(`Produto ${codprod} nao encontrado`);
         }
+
+        product.status = false;
+        return this.productRepository.save(product);
     }
 }

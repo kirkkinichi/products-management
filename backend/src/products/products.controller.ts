@@ -34,7 +34,7 @@ export class ProductsController {
         return this.productService.update(codprod, dscrprod, marca, valor);
     }
 
-    //DELETE request handler to delete a product
+    //DELETE request handler to inactivate a product
     @Delete(':codprod')
     remove(@Param('codprod') codprod: number) {
         return this.productService.delete(codprod);
