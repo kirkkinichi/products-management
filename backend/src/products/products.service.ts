@@ -2,15 +2,17 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Product } from './products.entity';
+import { LogService } from 'src/log/log.service';
 
 @Injectable()
 export class ProductsService {
     constructor(
         @InjectRepository(Product)
-        private productRepository: Repository<Product>
+        private productRepository: Repository<Product>,
+        private logService: LogService,
     ) { }
 
-    // Method to get all products
+    // Method to find all products
     findAll() {
         return this.productRepository.find();
     }
@@ -23,16 +25,22 @@ export class ProductsService {
         if (!product) {
             throw new Error(`Produto ${codprod} nao encontrado`);
         }
+
         return product;
     }
 
     // Method to create a new product
-    create(dscrprod: string, marca: string, valor: string) {
+    async create(dscrprod: string, marca: string, valor: string) {
         const product = new Product();
+
         product.dscrprod = dscrprod;
         product.marca = marca;
         product.valor = valor;
-        return this.productRepository.save(product);
+
+        let productCreated = this.productRepository.save(product);
+
+        this.logService.create('CREATE', (await productCreated).codprod);
+        return productCreated;
     }
 
     // Method to update an existing product
@@ -46,6 +54,8 @@ export class ProductsService {
         product.dscrprod = dscrprod;
         product.marca = marca;
         product.valor = valor;
+
+        this.logService.create('UPDATE', codprod);
         return this.productRepository.save(product);
     }
 
@@ -60,6 +70,7 @@ export class ProductsService {
         }
 
         product.status = false;
+        this.logService.create('DELETE', codprod);
         return this.productRepository.save(product);
     }
 }

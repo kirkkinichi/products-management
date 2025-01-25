@@ -1,9 +1,10 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { ProductsService } from './products.service';
+import { LogService } from 'src/log/log.service';
 
 @Controller('produto')
 export class ProductsController {
-    constructor(private readonly productService: ProductsService) { }
+    constructor(private readonly productService: ProductsService, private readonly logService: LogService) { }
 
     //GET request handler to fetch all products
     @Get()
