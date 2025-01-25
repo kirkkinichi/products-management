@@ -18,7 +18,18 @@ export class LogService {
         return this.logRepository.save(log);
     }
 
-    findAll() {
-        return this.logRepository.find();
+    async findLogs(entidade: string, pagina: number, limite: number) {
+        const skip = (pagina - 1) * limite;
+
+        const queryBuilder = this.logRepository.createQueryBuilder('log');
+
+        if (entidade) {
+            queryBuilder.andWhere('log.entidade = :entidade', { entidade });
+        }
+
+        return queryBuilder
+            .skip(skip)
+            .take(limite)
+            .getMany();
     }
 }
