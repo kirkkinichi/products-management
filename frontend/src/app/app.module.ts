@@ -9,7 +9,7 @@ import { LogListComponent } from './logs/log-list/log-list.component';
 import { StatusComponent } from './status/status.component';
 
 const routes: Routes = [
-  { path: 'produtos', component: ProductListComponent },
+  { path: '', component: ProductListComponent },
   { path: 'logs', component: LogListComponent },
   { path: 'status', component: StatusComponent },
 ];
