@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService, Product } from '../product.service';
-import { NgFor } from '@angular/common';
+import { NgFor, NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-product-list',
-  imports: [NgFor],
+  imports: [NgFor, NgStyle],
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
