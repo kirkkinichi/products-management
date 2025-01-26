@@ -5,25 +5,25 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { ProductService } from './products/product.service';
-import { LogsComponent } from './logs/log-list/logs.component';
+import { LogListComponent } from './logs/log-list/log-list.component';
 import { StatusComponent } from './status/status.component';
 
 const routes: Routes = [
   { path: 'produtos', component: ProductListComponent },
-  { path: 'logs', component: LogsComponent },
+  { path: 'logs', component: LogListComponent },
   { path: 'status', component: StatusComponent },
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    LogsComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     ProductListComponent,
-    StatusComponent
+    StatusComponent,
+    LogListComponent
   ],
   providers: [ProductService, provideHttpClient()],
   bootstrap: [AppComponent]
