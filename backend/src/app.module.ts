@@ -1,13 +1,14 @@
-import { Module } from '@nestjs/common';
+import { Module } from '@nestjs/common'; 
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProductsModule } from './products/products.module';
 import { LogModule } from './log/log.module';
-import { StatusController } from './status/status.controller';  // Importa o controlador de Status
-import { StatusService } from './status/status.service';  // Importa o serviço de Status
-import { Product } from './products/products.entity';  // A entidade que será usada para verificar a conectividade do banco
+import { StatusController } from './status/status.controller';
+import { StatusService } from './status/status.service';
+import { Product } from './products/products.entity';
 
 @Module({
   imports: [
+    // Setting up the database connection using SQLite with TypeORM
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'database.sqlite',
@@ -16,9 +17,9 @@ import { Product } from './products/products.entity';  // A entidade que será u
     }),
     ProductsModule,
     LogModule,
-    TypeOrmModule.forFeature([Product]),  // Registra a entidade Product para ser usada pelo StatusService
+    TypeOrmModule.forFeature([Product]),
   ],
-  controllers: [StatusController],
+  controllers: [StatusController], 
   providers: [StatusService],
 })
 export class AppModule {}
