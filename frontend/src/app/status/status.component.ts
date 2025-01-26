@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { StatusService } from './status.service';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-status',
+  imports: [NgClass],
   templateUrl: './status.component.html',
   styleUrls: ['./status.component.scss'],
   standalone: true,

@@ -1,7 +1,40 @@
-<div class="status">
-    <h2>Status do Servidor</h2>
-    <p><strong>Data e Hora:</strong> {{ dateTime }}</p>
-    <p><strong>Status do Servidor:</strong> {{ serverStatus === 'ok' ? 'Servidor ativo' : 'Servidor inativo' }}</p>
-    <p><strong>Status do Banco de Dados:</strong> {{ databaseStatus === 'ok' ? 'Banco de dados ativo' : 'Banco de dados inativo' }}</p>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="status-box p-4 rounded shadow-lg">
+        <h2 class="text-center mb-4">Status do Servidor e Banco de Dados</h2>
+        
+        <div class="status-item mb-3">
+          <strong>Data e Hora:</strong>
+          <p>{{ dateTime }}</p>
+        </div>
+
+        <div class="status-item mb-3">
+          <strong>Status do Servidor:</strong>
+          <p
+            class="status-text"
+            [ngClass]="{
+              'text-success': serverStatus === 'ok',
+              'text-danger': serverStatus === 'falha'
+            }"
+          >
+            {{ serverStatus === 'ok' ? 'Servidor ativo' : 'Servidor inativo' }}
+          </p>
+        </div>
+
+        <div class="status-item mb-3">
+          <strong>Status do Banco de Dados:</strong>
+          <p
+            class="status-text"
+            [ngClass]="{
+              'text-success': databaseStatus === 'ok',
+              'text-danger': databaseStatus === 'falha'
+            }"
+          >
+            {{ databaseStatus === 'ok' ? 'Banco de dados ativo' : 'Banco de dados inativo' }}
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
-  
+</div>
