@@ -18,12 +18,12 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     LogsComponent,
-    StatusComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    ProductListComponent
+    ProductListComponent,
+    StatusComponent
   ],
   providers: [ProductService, provideHttpClient()],
   bootstrap: [AppComponent]
