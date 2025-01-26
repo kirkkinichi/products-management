@@ -1,1 +1,38 @@
-<p>logs works!</p>
+<div class="log-list">
+    <h2>Lista de Logs</h2>
+  
+    <div>
+      <input
+        type="text"
+        [(ngModel)]="entidade"
+        placeholder="Filtrar por entidade"
+        (ngModelChange)="filterByEntity()"
+      />
+    </div>
+  
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Entidade</th>
+          <th>Entidade ID</th>
+          <th>Data</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let log of logs">
+          <td>{{ log.id }}</td>
+          <td>{{ log.entidade }}</td>
+          <td>{{ log.entidade_id }}</td>
+          <td>{{ log.dtinc }}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div class="pagination">
+      <button (click)="prevPage()" [disabled]="currentPage <= 1">Anterior</button>
+      <span>Página {{ currentPage }}</span>
+      <button (click)="nextPage()">Próxima</button>
+    </div>
+  </div>
+  
