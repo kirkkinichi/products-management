@@ -65,6 +65,29 @@ ng serve
 
 - O frontend será iniciado no http://localhost:4200 por padrão. A aplicação irá interagir com o backend na porta 3000
 
+## Interação com a API
+
+### Produtos:
+
+- GET (todos os produtos): Para obter todos os produtos cadastrados, basta fazer uma requisição GET para o endpoint /produto
+
+- GET (buscar um produto específico): Para buscar um produto específico por codprod, você pode fazer uma requisição GET para o endpoint /produto/{codprod}, substituindo {codprod} pelo ID do produto desejado
+
+- POST: Para criar um novo produto, faça uma requisição POST para o endpoint /produto com os dados do produto no corpo da requisição
+
+- PUT: Para atualizar um produto existente, você pode fazer uma requisição PUT para o endpoint /produto/{codprod}, passando o novo corpo com as atualizações
+
+- DELETE: Para deletar um produto, faça uma requisição DELETE para o endpoint /produto/{codprod}
+
+### Logs:
+
+- GET: Para listar os logs com filtro por tipo de entidade e paginação, basta fazer uma requisição GET para o endpoint /log, incluindo os parâmetros: entidade e pagina para controlar a páginação (50 logs por página). Exemplo:
+http://localhost:3000/log?entidade=CREATE&pagina=1
+
+### Status:
+
+- GET: Para obter o status do servidor e banco de dados, basta fazer uma requisição GET para o endpoint /status
+
 ## Autor
 
 Kirk Kinichi Tomisaki Rodrigues da Silva
